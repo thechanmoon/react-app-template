@@ -12,7 +12,9 @@ class App extends Component{
     this.state = {
       subject:{title:"WEB",sub:"World Wide Web!"},
       contents: [
-        {id:1, title:"HTML"}
+        {id:1, title:"HTML", desc:"HTML is for information"},
+        {id:2, title:"CSS", desc:"CSS is for design"},
+        {id:3, title:"Javascript", desc:"Javascript is for interactive"}
       ]
     }
   }
@@ -25,7 +27,7 @@ class App extends Component{
           sub = {this.state.subject.sub}>
         </Subject>
         {/* <Subject title = "React" sub = "For UI"></Subject> */}
-        <Toc></Toc>
+        <Toc data={this.state.contents}></Toc>
         <Contents title = "HTML" desc = "HTML is HyperText Makrup Language."></Contents>
       </div >
     );          
