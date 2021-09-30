@@ -1,25 +1,23 @@
-import logo from './logo.svg';
+import React,  { Component } from 'react';
+// import logo from './logo.svg';
+import Toc from "./components/Toc";
+import Contents from "./components/Contents"
+import Subject from "./components/Subject"
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// function App() {
+class App extends Component{
+  render(){
+    return (
+      <div className="App">
+        {/* Hello, React!! */}
+        <Subject title = "WEB" sub = "world wide web!"></Subject>
+        <Subject title = "React" sub = "For UI"></Subject>
+        <Toc></Toc>
+        <Contents title = "HTML" desc = "HTML is HyperText Makrup Language."></Contents>
+      </div >
+    );          
+  }
 }
 
 export default App;
