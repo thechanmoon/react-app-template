@@ -10,7 +10,9 @@ class App extends Component{
   constructor(props){
     super(props);
     this.state = {
+      mode:"welcome",
       subject:{title:"WEB",sub:"World Wide Web!"},
+      welcome:{title:"Welcome",desc:"Hello, React!!"},
       contents: [
         {id:1, title:"HTML", desc:"HTML is for information"},
         {id:2, title:"CSS", desc:"CSS is for design"},
@@ -19,6 +21,17 @@ class App extends Component{
     }
   }
   render(){
+    var title = null;
+    var desc = null;
+
+    if(this.state.mode === "welcome")
+    {
+      title = this.state.welcome.title;
+      desc = this.state.welcome.desc;
+    }else if(this.state.mode ==="read"){
+      title = this.state.contents[0].title;
+      desc = this.state.contents[0].desc;
+    }
     return (
       <div className="App">
         {/* Hello, React!! */}
@@ -28,7 +41,8 @@ class App extends Component{
         </Subject>
         {/* <Subject title = "React" sub = "For UI"></Subject> */}
         <Toc data={this.state.contents}></Toc>
-        <Contents title = "HTML" desc = "HTML is HyperText Makrup Language."></Contents>
+        {/* <Contents title = "HTML" desc = "HTML is HyperText Makrup Language."></Contents> */}
+        <Contents title = {title} desc = {desc}></Contents>
       </div >
     );          
   }
