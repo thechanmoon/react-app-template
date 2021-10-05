@@ -10,7 +10,7 @@ class App extends Component{
   constructor(props){
     super(props);
     this.state = {
-      mode:"welcome",
+      mode:"read",
       subject:{title:"WEB",sub:"World Wide Web!"},
       welcome:{title:"Welcome",desc:"Hello, React!!"},
       contents: [
@@ -22,7 +22,7 @@ class App extends Component{
   }
   render(){
     var title = null;
-    var desc = null;
+    var desc = null; 
 
     if(this.state.mode === "welcome")
     {
@@ -35,11 +35,32 @@ class App extends Component{
     return (
       <div className="App">
         {/* Hello, React!! */}
-        <Subject 
+        {/* <Subject 
           title = {this.state.subject.title} 
           sub = {this.state.subject.sub}>
+        </Subject> */}
+        {/* <header>
+          <h1><a href="/" onClick={function(e){
+            console.log(e);
+            e.preventDefault();
+            // debugger;
+            this.setState({mode:"welcome"});
+          }.bind(this)}>{this.state.subject.title}</a></h1>
+          {this.state.subject.sub}
+        </header> */}
+        <Subject 
+          title = {this.state.subject.title} 
+          sub = {this.state.subject.sub}          
+          OnChangePage={
+            ()=>{
+              // console.log("in App.js test");
+              // alert("tiburon");
+              this.setState({mode:'welcome'});
+            }
+          }
+        > 
+
         </Subject>
-        {/* <Subject title = "React" sub = "For UI"></Subject> */}
         <Toc data={this.state.contents}></Toc>
         {/* <Contents title = "HTML" desc = "HTML is HyperText Makrup Language."></Contents> */}
         <Contents title = {title} desc = {desc}></Contents>
