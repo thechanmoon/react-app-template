@@ -5,7 +5,19 @@ class Toc extends Component{
       var lists = [];
       for(var i = 0; i < data.length;i ++)
       {
-        lists.push(<li key = {data[i].id}><a href ={"/contents/"+data[i].id}>{data[i].title}</a></li>)
+        lists.push(
+          <li key = {data[i].id}>
+            <a href ={"/contents/"+data[i].id}
+              data-id = {data[i].id}
+              onClick={(e)=>{
+                // console.log("in Subject.js test");
+                // console.log(e);
+                
+                e.preventDefault()
+                this.props.OnChangePage(e.target.dataset.id);
+              }}
+            >{data[i].title}</a>
+          </li>)
       }
       return(
         <nav>

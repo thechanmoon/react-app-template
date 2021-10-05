@@ -11,6 +11,7 @@ class App extends Component{
     super(props);
     this.state = {
       mode:"read",
+      selected_content_id:2,
       subject:{title:"WEB",sub:"World Wide Web!"},
       welcome:{title:"Welcome",desc:"Hello, React!!"},
       contents: [
@@ -29,8 +30,8 @@ class App extends Component{
       title = this.state.welcome.title;
       desc = this.state.welcome.desc;
     }else if(this.state.mode ==="read"){
-      title = this.state.contents[0].title;
-      desc = this.state.contents[0].desc;
+      title = this.state.contents[this.state.selected_content_id-1].title;
+      desc = this.state.contents[this.state.selected_content_id-1].desc;
     }
     return (
       <div className="App">
@@ -61,7 +62,21 @@ class App extends Component{
         > 
 
         </Subject>
-        <Toc data={this.state.contents}></Toc>
+        <Toc 
+          data={this.state.contents}
+          OnChangePage={
+            (id)=>{
+              //  console.log("in App.js test");
+              //  alert("tiburon");
+              this.setState({
+                mode:'read',
+                selected_content_id:Number(id)
+              });
+            }
+          }
+        >
+
+        </Toc>
         {/* <Contents title = "HTML" desc = "HTML is HyperText Makrup Language."></Contents> */}
         <Contents title = {title} desc = {desc}></Contents>
       </div >
