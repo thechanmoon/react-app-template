@@ -1,8 +1,10 @@
 import React,  { Component } from 'react';
 // import logo from './logo.svg';
 import Toc from "./components/Toc";
-import Contents from "./components/Contents"
+import ReadContent from "./components/ReadContent"
+import CreateContent from "./components/CreateContent"
 import Subject from "./components/Subject"
+import Control from "./components/Control"
 import './App.css';
 
 // function App() {
@@ -77,8 +79,19 @@ class App extends Component{
         >
 
         </Toc>
+
+        <Control OnChangeMode={
+            (mode)=>{
+              console.log("in App.js onChangeMode");
+              this.setState({mode:mode});
+            }
+          }></Control>
         {/* <Contents title = "HTML" desc = "HTML is HyperText Makrup Language."></Contents> */}
-        <Contents title = {title} desc = {desc}></Contents>
+        {
+          (this.state.mode === "welcome" || this.state.mode === "read") ?
+            <ReadContent title = {title} desc = {desc}></ReadContent> 
+          : <CreateContent title = {title} desc = {desc}></CreateContent>       
+        }
       </div >
     );          
   }
