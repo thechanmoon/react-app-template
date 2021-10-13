@@ -26,14 +26,18 @@ class App extends Component{
   render(){
     var title = null;
     var desc = null; 
-
+    var article = null;
     if(this.state.mode === "welcome")
     {
       title = this.state.welcome.title;
       desc = this.state.welcome.desc;
+      article =  <ReadContent title = {title} desc = {desc}></ReadContent>;
     }else if(this.state.mode ==="read"){
       title = this.state.contents[this.state.selected_content_id-1].title;
       desc = this.state.contents[this.state.selected_content_id-1].desc;
+      article =  <ReadContent title = {title} desc = {desc}></ReadContent>;
+    }else if(this.state.mode ==="create"){
+      article =  <CreateContent title = {title} desc = {desc}></CreateContent> ;
     }
     return (
       <div className="App">
@@ -88,9 +92,10 @@ class App extends Component{
           }></Control>
         {/* <Contents title = "HTML" desc = "HTML is HyperText Makrup Language."></Contents> */}
         {
-          (this.state.mode === "welcome" || this.state.mode === "read") ?
-            <ReadContent title = {title} desc = {desc}></ReadContent> 
-          : <CreateContent title = {title} desc = {desc}></CreateContent>       
+          // (this.state.mode === "welcome" || this.state.mode === "read") ?
+          //   <ReadContent title = {title} desc = {desc}></ReadContent> 
+          // : <CreateContent title = {title} desc = {desc}></CreateContent>       
+          article
         }
       </div >
     );          
