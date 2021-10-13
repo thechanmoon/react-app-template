@@ -37,7 +37,9 @@ class App extends Component{
       desc = this.state.contents[this.state.selected_content_id-1].desc;
       article =  <ReadContent title = {title} desc = {desc}></ReadContent>;
     }else if(this.state.mode ==="create"){
-      article =  <CreateContent title = {title} desc = {desc}></CreateContent> ;
+      article =  <CreateContent onSubmit={(title,desc)=>{
+        console.log(title+" "+desc);
+      }}></CreateContent> ;
     }
     return (
       <div className="App">

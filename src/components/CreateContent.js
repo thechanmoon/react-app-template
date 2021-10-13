@@ -7,7 +7,9 @@ class CreateContent extends Component{
           <form action="/create_process" method="post"
             onSubmit={(e)=>{
               e.preventDefault();
-              alert('Submit!!!!');
+              // alert('Submit!!!!');
+              //  debugger;
+              this.props.onSubmit(e.target.title.value,e.target.desc.value);
             }}
           >
 
