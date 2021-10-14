@@ -39,6 +39,11 @@ class App extends Component{
     }else if(this.state.mode ==="create"){
       article =  <CreateContent onSubmit={(title,desc)=>{
         console.log(title+" "+desc);
+        //var contents = Array.from(this.state.contents);
+        // contents.push({id:this.state.contents.length+1,title,desc});
+
+        var contents = [...this.state.contents,{id:this.state.contents.length+1,title,desc}];
+        this.setState({contents:contents});
       }}></CreateContent> ;
     }
     return (
