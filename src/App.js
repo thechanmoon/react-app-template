@@ -3,6 +3,7 @@ import React,  { Component } from 'react';
 import Toc from "./components/Toc";
 import ReadContent from "./components/ReadContent"
 import CreateContent from "./components/CreateContent"
+import UpdateContent from "./components/UpdateContent"
 import Subject from "./components/Subject"
 import Control from "./components/Control"
 import './App.css';
@@ -23,7 +24,9 @@ class App extends Component{
       ]
     }
   }
-  render(){
+
+  getContent()
+  {
     var title = null;
     var desc = null; 
     var article = null;
@@ -45,7 +48,23 @@ class App extends Component{
         var contents = [...this.state.contents,{id:this.state.contents.length+1,title,desc}];
         this.setState({contents:contents});
       }}></CreateContent> ;
+    }else if(this.state.mode ==="update"){      
+      article =  <UpdateContent 
+                  data = {this.state.contents[this.state.selected_content_id-1]} 
+                  onSubmit={(title,desc)=>{
+                            console.log(title+" "+desc);
+                            //var contents = Array.from(this.state.contents);
+                            // contents.push({id:this.state.contents.length+1,title,desc});
+
+                  var contents = [...this.state.contents,{id:this.state.contents.length+1,title,desc}];
+                  this.setState({contents:contents});
+      }}></UpdateContent> ;
     }
+    return article; 
+  }
+
+  render(){
+
     return (
       <div className="App">
         {/* Hello, React!! */}
@@ -102,7 +121,8 @@ class App extends Component{
           // (this.state.mode === "welcome" || this.state.mode === "read") ?
           //   <ReadContent title = {title} desc = {desc}></ReadContent> 
           // : <CreateContent title = {title} desc = {desc}></CreateContent>       
-          article
+          // article
+          this.getContent()
         }
       </div >
     );          
