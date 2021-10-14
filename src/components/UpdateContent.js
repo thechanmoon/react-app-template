@@ -1,5 +1,21 @@
 import React,  { Component } from 'react';
 class UpdateContent extends Component{
+    state ={
+      title: this.props.data.title,
+      desc:this.props.data.desc
+    }
+    // constructor(props){
+    //   super(props);
+    //   this.state ={
+    //     title:this.props.data.title,
+    //     desc:this.props.data.desc
+    //   }
+    // }
+
+    componentDidMount(){
+
+    }
+
     render(){
       console.log(this.props.data);
       console.log("UpdateContent render");
@@ -16,10 +32,18 @@ class UpdateContent extends Component{
           >
 
             <p>
-              <input type="text" name="title" placeholder="title"></input>
+              <input type="text" name="title" placeholder="title" value = {this.state.title}
+                      onChange={(e)=>{
+                      this.setState( {[e.target.name]:e.target.value} );
+               }}
+              ></input>
             </p>
             <p>
-              <textarea name="desc" placeholder="description"></textarea>
+              <textarea name="desc" placeholder="description" value ={this.state.desc}
+                        onChange={(e)=>{
+                        this.setState( {[e.target.name]:e.target.value} );
+               }}
+              ></textarea>
             </p>
             <p>
               <input type="submit"></input>

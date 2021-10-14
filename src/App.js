@@ -10,19 +10,35 @@ import './App.css';
 
 // function App() {
 class App extends Component{
-  constructor(props){
-    super(props);
-    this.state = {
-      mode:"create",
-      selected_content_id:2,
-      subject:{title:"WEB",sub:"World Wide Web!"},
-      welcome:{title:"Welcome",desc:"Hello, React!!"},
-      contents: [
-        {id:1, title:"HTML", desc:"HTML is for information"},
-        {id:2, title:"CSS", desc:"CSS is for design"},
-        {id:3, title:"Javascript", desc:"Javascript is for interactive"}
-      ]
-    }
+  // constructor(props){
+  //   super(props);
+  //   this.state = {
+  //     mode:"create",
+  //     selected_content_id:2,
+  //     subject:{title:"WEB",sub:"World Wide Web!"},
+  //     welcome:{title:"Welcome",desc:"Hello, React!!"},
+  //     contents: [
+  //       {id:1, title:"HTML", desc:"HTML is for information"},
+  //       {id:2, title:"CSS", desc:"CSS is for design"},
+  //       {id:3, title:"Javascript", desc:"Javascript is for interactive"}
+  //     ]
+  //   }
+  // }
+
+  state = {
+    mode:"create",
+    selected_content_id:2,
+    subject:{title:"WEB",sub:"World Wide Web!"},
+    welcome:{title:"Welcome",desc:"Hello, React!!"},
+    contents: [
+      {id:1, title:"HTML", desc:"HTML is for information"},
+      {id:2, title:"CSS", desc:"CSS is for design"},
+      {id:3, title:"Javascript", desc:"Javascript is for interactive"}
+    ]
+  }
+
+  componentDidMount(){
+
   }
 
   getContent()
